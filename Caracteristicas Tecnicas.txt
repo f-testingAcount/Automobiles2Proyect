@@ -1,0 +1,6 @@
+
+Modelo: Testarossa | Caracteristicas Tecnicas:  | TipoMotor: Naftero centra | Cilindros: 12 Boxer | Cilindrada: 5000 | HP: 390 | Caja: Manual de 5 velocidades | Equipamiento: Full | Carroceria: Berlinetta coupe | id: #123 -
+Modelo: Aventador | Caracteristicas Tecnicas:  | TipoMotor: Naftero central | Cilindros: V12 | Cilindrada: 5400 | HP: 700 | Caja: Secuencial mixta de 8 velocidades | Equipamiento: Full | Carroceria: Coupe | id: #124 -
+Modelo: 1500 Laramie | Caracteristicas Tecnicas:  | TipoMotor: Naftero delantero | Cilindros: V8 | Cilindrada: 6500 | HP: 395 | Caja: Automatica de 8 velocidades | Equipamiento: Full | Carroceria: Camioneta doble cabina | id: #125 -
+Modelo: F 150 Raptor | Caracteristicas Tecnicas:  | TipoMotor: Naftero | Cilindros: V6 | Cilindrada: 3000 | HP: 400 | Caja: Secuencial mista de 8 velocidades | Equipamiento: Full | Carroceria: Camioneta doble cabina | id: #126 -
+Modelo: 911 turbo s | Caracteristicas Tecnicas:  | TipoMotor: Naftero trasero | Cilindros: 6 Boxer | Cilindrada: 3600 | HP: 450 | Caja: Secuencial mixta de 8 velocidades | Equipamiento: Full | Carroceria: Coupe cabriolet | id: #127 -
