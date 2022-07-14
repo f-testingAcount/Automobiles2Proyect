@@ -67,7 +67,6 @@ public class AccesoDatosCaracteristicasTecImpl implements IAccesoDatos<Caracteri
     }
 
     @Override
-    //public Object buscar(String nombreArchivo, Object caracteristica) throws AccesoDatosEx {
     public CaracteristicasTec buscar(String nombreArchivo, CaracteristicasTec caracteristica) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         //String encontrado = null;
@@ -77,7 +76,6 @@ public class AccesoDatosCaracteristicasTecImpl implements IAccesoDatos<Caracteri
             var indice = 1;
             while(linea != null){
                 if(caracteristica != null && caracteristica.equals(linea)){
-                    //encontrado = "Caractristica " + linea + " encontrada en el indice " + indice;
                     caracteristica.toString();
                     break;
                 }

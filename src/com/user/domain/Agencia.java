@@ -4,11 +4,8 @@ import java.util.*;
 
 
 public class Agencia {
-    
-    //private String nombre;
-    //private String domicilio;
-    private String ciudad;
     private String nombreAgencia;
+    private String ciudad;
     private String marcaComercializada;
     private List<Modelo> modelos = new ArrayList<>();
 
@@ -20,7 +17,6 @@ public class Agencia {
 
     public Agencia(String nombreAgencia, String ciudad, String marcaComercializada) {
         this.nombreAgencia = nombreAgencia;
-        //this.domicilio = domicilio;
         this.ciudad = ciudad;
         this.marcaComercializada = marcaComercializada;
     }
@@ -33,13 +29,6 @@ public class Agencia {
         this.nombreAgencia = nombreAgencia;
     }
 
-//    public String getDomicilio() {
-//        return domicilio;
-//    }
-//
-//    public void setDomicilio(String domicilio) {
-//        this.domicilio = domicilio;
-//    }
 
     public String getCiudad() {
         return ciudad;
@@ -49,13 +38,6 @@ public class Agencia {
         this.ciudad = ciudad;
     }
 
-//    public Marca getMarca() {
-//        return marca;
-//    }
-//
-//    public void setMarca(Marca marca) {
-//        this.marca = marca;
-//    }
 
     public String getMarcaComercializada() {
         return marcaComercializada;
@@ -65,9 +47,6 @@ public class Agencia {
         this.marcaComercializada = marcaComercializada;
     }
     
-//    pubic void agregarModelo(Modelo modelo){
-//        
-//    }
     
     public int controlarStock(){
         int stock = 0;

@@ -8,7 +8,7 @@ public class Marca {
     private String nombre;
     private String origen;
     private String logo;
-//    private List<Modelo> modelos = new ArrayList<>();
+    private List<Modelo> modelos = new ArrayList<>();
 
     public Marca() {}
 
@@ -56,10 +56,4 @@ public class Marca {
         sb.append(" -");
         return sb.toString();
     }
-    
-    
-    
-    
-    
-    
 }

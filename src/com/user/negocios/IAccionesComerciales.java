@@ -17,7 +17,6 @@ public interface IAccionesComerciales {
     void iniciarArchivo();
     
     void agregarMarca(String nombreArchivo, String nombre, String origen, String logo);
-//    void agregarMarca(String nombreArchivo, Marca marca);
     
     void agregarModelos(String nombreArchivo, String tipoVehiculo, String denominacion, int cantidad); 
     
@@ -36,7 +35,5 @@ public interface IAccionesComerciales {
     void enviarUnidadesAAgencia(Marca marca, Modelo modelo);
     
     void borrarArchivo(String nombreArchivo);
-    
-    
-    
+            
 }

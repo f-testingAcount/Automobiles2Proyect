@@ -10,3 +10,4 @@ Modelo Tipo de Vehiculo: Auto | Denominacion: F40 | Cantidad: 1311 -
 Modelo Tipo de Vehiculo: Auto | Denominacion: Divo | Cantidad: 1 -
 Modelo Tipo de Vehiculo: Moto | Denominacion: quadd anphibius | Cantidad: 500 -
 Modelo Tipo de Vehiculo: Camion | Denominacion: Babis | Cantidad: 1000 -
+Modelo Tipo de Vehiculo: Moto | Denominacion: F 800 GS Adventure | Cantidad: 500 -

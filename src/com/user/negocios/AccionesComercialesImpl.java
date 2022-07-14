@@ -5,8 +5,6 @@ import com.user.datos.*;
 import com.user.domain.*;
 import com.user.exceptions.AccesoDatosEx;
 import com.user.negocios.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class AccionesComercialesImpl implements IAccionesComerciales {
@@ -15,18 +13,22 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     AccesoDatosMarcaImpl datosMarca;
     AccesoDatosModeloImpl datosModelo;
     AccesoDatosCaracteristicasTecImpl datosTecnicos;
-    
+    AccesoDatosDistribuidorImpl datosDistribuidor;
+    AccesoDatosAgenciaImpl datosAgencia;
     
     public AccionesComercialesImpl() {
         this.datos = new AccesoDatosMarcaImpl();
+        this.datosMarca = new AccesoDatosMarcaImpl();
+        this.datosModelo = new AccesoDatosModeloImpl();
+        this.datosTecnicos = new AccesoDatosCaracteristicasTecImpl();
+        this.datosDistribuidor = new AccesoDatosDistribuidorImpl();
+        this.datosAgencia = new AccesoDatosAgenciaImpl();
     }
     
     @Override
     public void iniciarArchivo() {
         try {
             if(this.datos.existe(ARCHIVO_MARCAS)){
-//                this.datos.borrar(ARCHIVO_MARCAS);
-//                this.datos.crear(ARCHIVO_MARCAS);
                 System.out.println("El archivo Marcas ya existe!");
 
             } else {
@@ -38,8 +40,6 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
         }
         try {
             if (this.datos.existe(ARCHIVO_MODELOS)) {
-//                this.datos.borrar(ARCHIVO_MODELOS);
-//                this.datos.crear(ARCHIVO_MODELOS);
                  System.out.println("El archivo Modelos ya existe!");
 
             } else {
@@ -51,8 +51,6 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
         }
         try {
             if (this.datos.existe(ARCHIVO_CARACTERISTICAS_TEC)) {
-//                this.datos.borrar(ARCHIVO_CARACTERISTICAS_TEC);
-//                this.datos.crear(ARCHIVO_CARACTERISTICAS_TEC);
                 System.out.println("El archivo Caracteristicas Tecnicas ya existe!");
 
             } else {
@@ -64,8 +62,6 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
         }
         try {
             if (this.datos.existe(ARCHIVO_DISTRIBUIDORES)) {
-//                this.datos.borrar(ARCHIVO_DISTRIBUIDORES);
-//                this.datos.crear(ARCHIVO_DISTRIBUIDORES);
                 System.out.println("El archivo Distribuidores ya existe!");
 
             } else {
@@ -77,8 +73,6 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
         }
         try {
             if (this.datos.existe(ARCHIVO_AGENCIAS)) {
-//                this.datos.borrar(ARCHIVO_AGENCIAS);
-//                this.datos.crear(ARCHIVO_AGENCIAS);
                 System.out.println("El archivo Agencias ya existe!");
 
             } else {
@@ -90,51 +84,16 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
         }
     }
 
-    //@Override
-    //public void agregarMarca(String nombre, String origen, String logo) {
-       //Marca marca = new Marca(nombre, origen, logo);
-       //try {
-       //     this.datos.escribir(marca, ARCHIVO_MARCAS);
-//        Marca marca = new Marca(nombre, origen, logo);
-//        boolean anexar = false;
-//        try {
-//            if(anexar = datos.existe(nombreArchivo)){
-//            this.datos.escribir(nombre, nombreArchivo, anexar);
-//            } else {
-//                System.out.println("El archivo no exixte!");
-//            }
-//        } catch (AccesoDatosEx ex) {
-//            System.out.println("Error al agregar marca!");
-//            ex.printStackTrace(System.out);
-//        }
-        //} catch (AccesoDatosEx ex) {
-        //    System.out.println("Error al agregar marca!");
-        //    ex.printStackTrace(System.out);
-        //}
-    //}
-    
      @Override
     public void agregarMarca(String nombreArchivo, String nombre, String origen, String logo) {
         Marca marca = new Marca(nombre, origen, logo);
-//        try {
-//            this.datos.escribir(marca, ARCHIVO_MARCAS);
-//        Marca marca = new Marca(nombre, origen, logo);
         boolean anexar = false;
         try {
-            //        try {
-            if(anexar = datos.existe(ARCHIVO_MARCAS)){
-                this.datos.escribir(marca, nombreArchivo);
+            if(anexar = datosMarca.existe(ARCHIVO_MARCAS)){
+                this.datosMarca.escribir(marca, nombreArchivo);
             } else {
                 System.out.println("El archivo Marcas no exixte!");
             }
-//        } catch (AccesoDatosEx ex) {
-//            System.out.println("Error al agregar marca!");
-//            ex.printStackTrace(System.out);
-//        }
-//        } catch (AccesoDatosEx ex) {
-//            System.out.println("Error al agregar marca!");
-//            ex.printStackTrace(System.out);
-//        }
         } catch (AccesoDatosEx ex) {
             System.out.println("Error al agregar marca!");
             ex.printStackTrace(System.out);
@@ -146,8 +105,8 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
         Modelo modelo = new Modelo(tipoVehiculo, denominacion, cantidad);
         boolean anexar = false;
         try {
-            if(anexar = this.datos.existe(ARCHIVO_MODELOS)){
-                this.datos.escribir(modelo, nombreArchivo);
+            if(anexar = this.datosModelo.existe(ARCHIVO_MODELOS)){
+                this.datosModelo.escribir(modelo, nombreArchivo);
             } else {
                 System.out.println("El archivo Modelos no existe!");                       
             }
@@ -162,8 +121,8 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     public void agregarCaracteristicasTecnicas(String nombreArchivo, String denominacion, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id) {
         CaracteristicasTec caracteristica = new CaracteristicasTec(denominacion, tipoMotor, cilindros, cilindrada, HP, caja, equipamiento, carroceria, id);
         try {
-            if (this.datos.existe(ARCHIVO_CARACTERISTICAS_TEC)) {
-                this.datos.escribir(caracteristica, nombreArchivo);
+            if (this.datosTecnicos.existe(ARCHIVO_CARACTERISTICAS_TEC)) {
+                this.datosTecnicos.escribir(caracteristica, nombreArchivo);
             } else {
                 System.out.println("El archivo caracteristicas tecnicas no existe!");
             }
@@ -175,10 +134,10 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     
      @Override
     public void agregarDistribuidor(String nombreArchivo, String nombreDistribuidor, String pais) {
-        Distribuidor distribuidor = new Distribuidor(nombreDistribuidor, pais);
+        Distribuidor distribuidor = new Distribuidor(nombreDistribuidor, pais);        
         try {
-            if (this.datos.existe(ARCHIVO_DISTRIBUIDORES)) {
-                this.datos.escribir(distribuidor, nombreArchivo);
+            if (this.datosDistribuidor.existe(ARCHIVO_DISTRIBUIDORES)) {
+                this.datosDistribuidor.escribir(distribuidor, nombreArchivo);
             } else {
                 System.out.println("El archivo distribuidores no existe!");
             }
@@ -192,8 +151,8 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     public void agregarAgencia(String nombreArchivo, String nombreAgencia, String ciudad, String marcaComercializada) {
         Agencia agencia = new Agencia(nombreAgencia, ciudad, marcaComercializada);
         try {
-            if (this.datos.existe(ARCHIVO_AGENCIAS)) {
-                this.datos.escribir(agencia, nombreArchivo);
+            if (this.datosAgencia.existe(ARCHIVO_AGENCIAS)) {
+                this.datosAgencia.escribir(agencia, nombreArchivo);
             } else {
                 System.out.println("El archivo agencias no existe!");
             }

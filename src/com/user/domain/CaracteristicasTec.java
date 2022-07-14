@@ -1,7 +1,7 @@
 package com.user.domain;
 
 
-public class CaracteristicasTec extends Modelo {
+public class CaracteristicasTec {
     
     private String tipoMotor; //Nafta, gasoil
     private String cilindros;
@@ -11,8 +11,6 @@ public class CaracteristicasTec extends Modelo {
     private String equipamiento; //Base o full
     private String carroceria; //Auto, camioneta, SUV, cntidad de puertas
     private String id; //Codigo unico de identificacion
-    //private Modelo modelo;
-    
 
     public CaracteristicasTec() {super();}
 
@@ -32,7 +30,6 @@ public class CaracteristicasTec extends Modelo {
     }
 
     public CaracteristicasTec(String denominacion, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id) {
-        super(denominacion);
         this.tipoMotor = tipoMotor;
         this.cilindros = cilindros;
         this.cilindrada = cilindrada;
@@ -44,10 +41,6 @@ public class CaracteristicasTec extends Modelo {
         
     }
     
-//    public CaracteristicasTec(Modelo denominacion, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-
     public String getTipoMotor() {
         return tipoMotor;
     }
@@ -112,18 +105,10 @@ public class CaracteristicasTec extends Modelo {
         this.id = id;
     }
 
-    public String getDenominacion() {
-        return denominacion;
-    }
-
-    public void setDenominacion(String denominacion) {
-        this.denominacion = denominacion;
-    }
-    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Modelo: ").append(denominacion);
+//        sb.append("Modelo: ").append(denominacion);
         sb.append(" | Caracteristicas Tecnicas: ");
         sb.append(" | TipoMotor: ").append(tipoMotor);
         sb.append(" | Cilindros: ").append(cilindros);

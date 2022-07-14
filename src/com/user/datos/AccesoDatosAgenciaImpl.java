@@ -28,7 +28,6 @@ public class AccesoDatosAgenciaImpl implements IAccesoDatos<Agencia> {
     }
 
     @Override
-    //public void escribir(Object agencia, String nombreArchivo, boolean anexar) throws AccesoDatosEx {
     public void escribir(Agencia agencia, String nombreArchivo) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         PrintWriter write;

@@ -24,6 +24,8 @@ public class Ejecutable {
 //        Distribuidor distribuidor = new Distribuidor();
 //        Agencia agencia = new Agencia();
         
+        
+        
         IAccionesComerciales accion = new AccionesComercialesImpl();
         
         int opcion = -1;
@@ -66,9 +68,6 @@ public class Ejecutable {
                     var origen = inputString.nextLine();
                     System.out.println("Ingrese el logo de la marca: ");
                     var logo = inputString.nextLine();
-//                    System.out.println("Ingrese el nombre del archivo: ");
-//                    var nombreArchivo = inputString.nextLine();
-                    //Marca marca = new Marca(nombre, origen, logo);
                     accion.agregarMarca(ARCHIVO_MARCAS, nombre, origen, logo);
                 }
                 
@@ -124,13 +123,11 @@ public class Ejecutable {
                 }
                 
                 case 7 ->{ //Vender Vehiculo
-                    
-                    
-                
+                                    
                 }
                 
                 case 8 ->{ //Ingresar al service de garantia
-                
+                    
                 }
                 
                 case 9 ->{ //Servicio mecanico externo
@@ -177,8 +174,7 @@ public class Ejecutable {
                 }
                 
                 case 19 -> { //Testeo
-                    CaracteristicasTec caracteristica = new CaracteristicasTec();
-                    caracteristica.mostrarCaracteristicas();
+                    
                 }
                 
                 case 0 ->{ //Salir

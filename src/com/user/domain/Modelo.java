@@ -3,7 +3,7 @@ package com.user.domain;
 import java.util.*;
 
 
-public class Modelo extends Marca {
+public class Modelo {
     
     private String tipoVehiculo; //Auto, camioneta, Moto, camion
     String denominacion;
@@ -62,7 +62,7 @@ public class Modelo extends Marca {
     
     public void mostrarCaracteristicas(){
         for (int i = 0; i < caracteristicas.size(); i++) {
-            System.out.println("Caracteristica: " + caracteristicas.get(i));
+            System.out.println(caracteristicas.get(i));
         }
     }
     
