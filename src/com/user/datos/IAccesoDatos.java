@@ -11,9 +11,13 @@ public interface IAccesoDatos <T> {
     
     void escribir(T variable, String nombreArchivo) throws AccesoDatosEx;
     
+    void sobreEscribir(T variable, String nombreArchivo) throws AccesoDatosEx;
+
     List<T> listar(String nombreArchivo) throws AccesoDatosEx;
     
-    T buscar(String nombreArchivo, T object) throws AccesoDatosEx;
+    T buscar(String nombreArchivo, String denominacion) throws AccesoDatosEx;
+    
+    int buscarIndice(String nombreArchivo, T object) throws AccesoDatosEx;
     
     void borrar(String nombreArchivo) throws AccesoDatosEx;
     

@@ -29,7 +29,6 @@ public class Agencia {
         this.nombreAgencia = nombreAgencia;
     }
 
-
     public String getCiudad() {
         return ciudad;
     }
@@ -48,14 +47,20 @@ public class Agencia {
     }
     
     
-    public int controlarStock(){
+    public int totalStock(){
         int stock = 0;
-        
+        for (int i = 0; i < modelos.size(); i++) {
+            //Solucionado //La existencia de stock de una determinada marca la podria controlar con invocando un metodo definido en la clase Marca 
+            stock = stock + modelos.get(i).getCantidad(); //Como sumo las cantidades que me devuelve de cada posicion? para saber cuantos modelos hay de cada tipo
+        }
         return stock;
     }
     
     public void venderVehiculo(Marca marca, Modelo modelo, CaracteristicasTec caracteristica){
-        
+        //Controlar el stock de marca, modelo y caracteristicas tecnicas invocando metodos predefinidos.
+        //Efectuar la venta descontando el modelo del stock.
+        //Ademas en funcion al diseño del programa donde conviene ubicar el metodo venderVehiculo? En la clase agencia que es la que por logica ejecuta
+        //la accion o en la clase acciones comerciales donde implemento los varios de los metodos de interaccion con el cliente?
     }
 
     @Override
@@ -68,14 +73,4 @@ public class Agencia {
         sb.append(" -");
         return sb.toString();
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

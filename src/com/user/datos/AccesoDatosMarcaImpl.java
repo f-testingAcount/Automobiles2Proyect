@@ -12,11 +12,11 @@ public class AccesoDatosMarcaImpl implements IAccesoDatos<Marca> {
         File archivo = new File(nombreArchivo);
         try {
             PrintWriter createFile = new PrintWriter(new FileWriter(archivo));
-            System.out.println("Se ha creado el archivo  " + nombreArchivo + "!");
+            System.out.println("Se ha creado el archivo " + nombreArchivo + "!");
             createFile.close();
         } catch (IOException ex) {
             ex.printStackTrace(System.out);
-            throw new AccesoDatosEx("Error al crear el archivo!" + ex.getMessage());
+            throw new AccesoDatosEx("Error al crear el archivo fabricantes!" + ex.getMessage());
         }
     }
 
@@ -34,11 +34,46 @@ public class AccesoDatosMarcaImpl implements IAccesoDatos<Marca> {
             PrintWriter write = new PrintWriter(new FileWriter(archivo, true));
             write.println(marca.toString());
             write.close();
-            System.out.println("Se agrego una marca al archivo marcas!");
+            System.out.println("Se agrego una marca al archivo fabricantes!");
         } catch (IOException ex) {
             ex.printStackTrace(System.out);
-            throw new AccesoDatosEx("Error al escribir en el archivo de marcas!" + ex.getMessage());
+            throw new AccesoDatosEx("Error al escribir en el archivo de fabricantes!" + ex.getMessage());
         }        
+    }
+    
+    @Override
+    public void sobreEscribir(Marca marca, String nombreArchivo) throws AccesoDatosEx {
+        File archivo = new File(nombreArchivo);
+        int indice = buscarIndice(nombreArchivo, marca);
+        int posicion = 1;
+        try {
+            BufferedReader leer = new BufferedReader(new FileReader(archivo));
+            String linea = leer.readLine();
+            while(linea != null){
+                if (posicion < indice) {
+                    posicion++;
+                    linea = leer.readLine();
+                } else {
+                    break;
+                }                
+            }
+            leer.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al sobre escribir en el archivo fabricantes!" + ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al sobre escribir en el archivo fabricantes!" + ex.getMessage());
+        }        
+        try {
+            PrintWriter write = new PrintWriter(new FileWriter(archivo, false));
+            write.println(marca.toString());
+            write.close();
+            System.out.println("Se modificaron datos de una marca en el archivo fabricantes!");
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Se modificaron datos de una marca en el archivo fabricantes!" + ex.getMessage());
+        }
     }
 
     @Override
@@ -65,19 +100,19 @@ public class AccesoDatosMarcaImpl implements IAccesoDatos<Marca> {
     }
 
     @Override
-    public Marca buscar(String nombreArchivo, Marca marca) throws AccesoDatosEx {
+    public Marca buscar(String nombreArchivo, String nombre) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         //String encontrado = null;
         //marca = null;
+        Marca marca = new Marca();
         try {
             BufferedReader search = new BufferedReader(new FileReader(archivo));
             String linea = search.readLine();
             int indice = 1;
             while(linea != null){
-                if (marca != null && marca.equals(linea)) {
-                    //encontrado = "Marca: " + linea + " localizada en el indice " + indice;
-                    //System.out.println("Marca: " + linea + " localizada en el indice " + indice);
-                    marca.toString();
+                if (nombre != null && nombre.equals(linea)) {
+                    //nombre.toString();
+                    marca.getNombre();
                     break;
                 }
                 indice++;
@@ -86,14 +121,41 @@ public class AccesoDatosMarcaImpl implements IAccesoDatos<Marca> {
             search.close();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace(System.out);
-            throw new AccesoDatosEx("Error al buscar en el archivo!" + ex.getMessage());
+            throw new AccesoDatosEx("Error al buscar en el archivo fabricantes!" + ex.getMessage());
         } catch (IOException ex) {
             ex.printStackTrace(System.out);
-            throw new AccesoDatosEx("Error al buscar en el archivo!" + ex.getMessage());
+            throw new AccesoDatosEx("Error al buscar en el archivo fabricantes!" + ex.getMessage());
         }
         return marca;
     }
 
+    @Override
+    public int buscarIndice(String nombreArchivo, Marca marca) throws AccesoDatosEx {
+        File archivo = new File(nombreArchivo);
+        var indice = 1;
+        try {
+            BufferedReader search = new BufferedReader(new FileReader(archivo));
+            String linea = search.readLine();
+            while(linea != null){
+                if (marca != null && marca.equals(linea)) {
+                    marca.toString();
+                    break;
+                } else {
+                indice++;
+                }
+                linea = search.readLine();
+            }
+            search.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al buscar indice en el archivo fabricantes!" + ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al buscar indice en el archivo fabricantes!" + ex.getMessage());
+        }
+        return indice;
+    }
+    
     @Override
     public void borrar(String nombreArchivo) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);

@@ -1,7 +1,6 @@
 
 package com.user.domain;
 
-import java.util.*;
 
 
 public class Distribuidor {
@@ -45,7 +44,6 @@ public class Distribuidor {
         sb.append("Distribuidor: ");
         sb.append("Nombre: ").append(nombreDistribuidor);
         sb.append(" | Pais: ").append(pais);
-        //sb.append(" | Agencias: ").append(agencias);
         sb.append(" -");
         return sb.toString();
     }

@@ -1,7 +1,11 @@
 
 package com.user;
 
+import com.user.datos.AccesoDatosMarcaImpl;
+import com.user.datos.AccesoDatosModeloImpl;
+import com.user.datos.IAccesoDatos;
 import com.user.domain.*;
+import com.user.exceptions.AccesoDatosEx;
 import com.user.negocios.*;
 import static com.user.negocios.IAccionesComerciales.ARCHIVO_AGENCIAS;
 import static com.user.negocios.IAccionesComerciales.ARCHIVO_CARACTERISTICAS_TEC;
@@ -9,22 +13,25 @@ import static com.user.negocios.IAccionesComerciales.ARCHIVO_DISTRIBUIDORES;
 import static com.user.negocios.IAccionesComerciales.ARCHIVO_MARCAS;
 import static com.user.negocios.IAccionesComerciales.ARCHIVO_MODELOS;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Ejecutable {
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AccesoDatosEx {
         Scanner input = new Scanner(System.in);
         Scanner inputString = new Scanner(System.in);
         
 //        Marca marca = new Marca();
-//        Modelo modelo = new Modelo();
+        Modelo modelo = new Modelo();
 //        CaracteristicasTec caracteristicas = new CaracteristicasTec();
 //        Distribuidor distribuidor = new Distribuidor();
 //        Agencia agencia = new Agencia();
         
-        
+        IAccesoDatos datos = new AccesoDatosMarcaImpl();
+        IAccesoDatos datosModelo = new AccesoDatosModeloImpl();
         
         IAccionesComerciales accion = new AccionesComercialesImpl();
         
@@ -123,7 +130,16 @@ public class Ejecutable {
                 }
                 
                 case 7 ->{ //Vender Vehiculo
-                                    
+                    System.out.println("Ingrese los datos del modelo: ");
+                    System.out.println("Ingrese el tipo de vehiculo: ");
+                    var tipoVehiculo = inputString.nextLine();
+                    System.out.println("Ingrese la denominacion del vehiculo: ");
+                    var denominacion = inputString.nextLine();
+                    System.out.println("Ingrese la cantidad de vehiculos en existencia: ");
+                    var cantidad = modelo.getCantidad();
+                    modelo = new Modelo(tipoVehiculo, denominacion, cantidad);
+                    System.out.println("Hay en existencia del modelo " + modelo.getDenominacion() + " " + modelo.getCantidad() + " unidades\n");
+                    accion.venderVehiculo(modelo);
                 }
                 
                 case 8 ->{ //Ingresar al service de garantia
@@ -138,8 +154,13 @@ public class Ejecutable {
                                     
                 }
                 
-                case 11 ->{ //Listar Modelos
-                
+                case 11 ->{ try {
+                    //Listar Modelos
+                    System.out.println(datosModelo.listar(ARCHIVO_MODELOS) + "\n");
+                } catch (AccesoDatosEx ex) {
+                    Logger.getLogger(Ejecutable.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    
                 }
                 
                 case 12 ->{ //Listar Caracteristicas Tecnicas
@@ -155,7 +176,9 @@ public class Ejecutable {
                 }
                 
                 case 15 ->{ //Buscar Modelo
-                
+                    System.out.println("Ingrese la deniminacion del modelo: ");
+                    var denominacion = inputString.nextLine();
+                    System.out.println(datosModelo.buscar(ARCHIVO_MODELOS, denominacion));
                 }
                 
                 case 16 ->{ //Buscar Distribuidor

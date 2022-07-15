@@ -12,7 +12,7 @@ public class CaracteristicasTec {
     private String carroceria; //Auto, camioneta, SUV, cntidad de puertas
     private String id; //Codigo unico de identificacion
 
-    public CaracteristicasTec() {super();}
+    public CaracteristicasTec() {}
 
     public CaracteristicasTec(String id) {
         this.id = id;

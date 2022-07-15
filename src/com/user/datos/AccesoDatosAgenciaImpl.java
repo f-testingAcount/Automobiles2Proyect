@@ -41,6 +41,41 @@ public class AccesoDatosAgenciaImpl implements IAccesoDatos<Agencia> {
             throw new AccesoDatosEx("Error al escribir en el archivo de agencias!" + ex.getMessage());
         }
     }
+    
+    @Override
+    public void sobreEscribir(Agencia agencia, String nombreArchivo) throws AccesoDatosEx {
+        File archivo = new File(nombreArchivo);
+        int indice = buscarIndice(nombreArchivo, agencia);
+        int posicion = 1;
+        try {
+            BufferedReader leer = new BufferedReader(new FileReader(archivo));
+            String linea = leer.readLine();
+            while(linea != null){
+                if (posicion < indice) {
+                    posicion++;
+                    linea = leer.readLine();
+                } else {
+                    break;
+                }                
+            }
+            leer.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al sobre escribir en el archivo agencias!" + ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al sobre escribir en el archivo agencias!" + ex.getMessage());
+        }        
+        try {
+            PrintWriter write = new PrintWriter(new FileWriter(archivo, false));
+            write.println(agencia.toString());
+            write.close();
+            System.out.println("Se modificaron datos de una agencia en el archivo agencias!");
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Se modificaron datos de una agencia en el archivo agencias!" + ex.getMessage());
+        }
+    }
 
     @Override
     public List listar(String nombreArchivo) throws AccesoDatosEx {
@@ -66,10 +101,10 @@ public class AccesoDatosAgenciaImpl implements IAccesoDatos<Agencia> {
 
     @Override
 //    public Object buscar(String nombreArchivo, Object agencia) throws AccesoDatosEx {
-    public Agencia buscar(String nombreArchivo, Agencia agencia) throws AccesoDatosEx {
+    public Agencia buscar(String nombreArchivo, String agencia) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         //String encontrado = null;
-        agencia = null;
+        Agencia nombreAgencia = new Agencia();        
         try {
             BufferedReader search = new BufferedReader(new FileReader(archivo));
             String linea = search.readLine();
@@ -78,7 +113,8 @@ public class AccesoDatosAgenciaImpl implements IAccesoDatos<Agencia> {
                 if (agencia != null && agencia.equals(linea)) {
                     //encontrado = "Agencia " + linea + " localizada en el indice " + indice;
                     //agencia.toString();
-                    System.out.println("Agencia " + agencia + " localizada en el indice " + indice);
+                    //System.out.println("Agencia " + agencia + " localizada en el indice " + indice);
+                    System.out.println(nombreAgencia.getNombreAgencia());
                     break;
                 }
                 indice++;
@@ -92,7 +128,34 @@ public class AccesoDatosAgenciaImpl implements IAccesoDatos<Agencia> {
             ex.printStackTrace(System.out);
             throw new AccesoDatosEx("Error al buscar en el archivo agencias!" + ex.getMessage());
         }
-        return agencia;
+        return nombreAgencia;
+    }
+    
+    @Override
+    public int buscarIndice(String nombreArchivo, Agencia agencia) throws AccesoDatosEx {
+        File archivo = new File(nombreArchivo);
+        var indice = 1;
+        try {
+            BufferedReader search = new BufferedReader(new FileReader(archivo));
+            String linea = search.readLine();
+            while(linea != null){
+                if (agencia != null && agencia.equals(linea)) {
+                    agencia.toString();
+                    break;
+                } else {
+                indice++;
+                }
+                linea = search.readLine();
+            }
+            search.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al buscar indice en el archivo modelos!" + ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al buscar indice en el archivo modelos!" + ex.getMessage());
+        }
+        return indice;
     }
 
     @Override

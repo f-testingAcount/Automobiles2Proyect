@@ -15,6 +15,11 @@ public class Modelo {
     public Modelo(String denominacion) {
         this.denominacion = denominacion;
     }
+    
+    public Modelo(String tipoVehiculo, String denominacion){
+        this.tipoVehiculo = tipoVehiculo;
+        this.denominacion = denominacion;
+    }
 
     public Modelo(String tipoVehiculo, String denominacion, int cantidad) {
         this.tipoVehiculo = tipoVehiculo;
@@ -53,8 +58,6 @@ public class Modelo {
     public void setCaracteristicas(ArrayList<CaracteristicasTec> caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
-    
-    
     
     public void agregarCaracteristicaAModelo(CaracteristicasTec caracteristica){
         caracteristicas.add(caracteristica);

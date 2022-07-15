@@ -17,7 +17,7 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     AccesoDatosAgenciaImpl datosAgencia;
     
     public AccionesComercialesImpl() {
-        this.datos = new AccesoDatosMarcaImpl();
+        //this.datos = new AccesoDatosMarcaImpl();
         this.datosMarca = new AccesoDatosMarcaImpl();
         this.datosModelo = new AccesoDatosModeloImpl();
         this.datosTecnicos = new AccesoDatosCaracteristicasTecImpl();
@@ -164,12 +164,25 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     
     @Override
     public void enviarPedidoAFabricante(Marca marca, int unidades) {
-        
+        //En vase al stock con que cuenta el distribuidor solicitar mas unidades.
     }
 
     @Override
-    public void venderVehiculo(Marca marca, Modelo modelo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void venderVehiculo(Modelo modelo) {
+        try {
+            Modelo modeloEncontrado = datosModelo.buscar(ARCHIVO_MODELOS, modelo);
+            if (modeloEncontrado != null) {
+                modeloEncontrado.setCantidad(modeloEncontrado.getCantidad() - 1);
+                System.out.println("Se ha vendido un vehiculo!");
+                System.out.println("Quedan en stock del modelo " + modelo + " " + modelo.getCantidad());
+            } else {
+                //Pedir stock al fabricante
+                System.out.println("No hay stock del modelo solicitado! Enviar pedido a distribuidor!");
+            }
+        } catch (AccesoDatosEx ex) {
+            System.out.println("Error al vender vehiculo!");
+            ex.printStackTrace(System.out);
+        }
     }
 
     @Override

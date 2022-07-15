@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.*;
 
 
+
 public class AccesoDatosModeloImpl implements IAccesoDatos<Modelo> {
 
     @Override
@@ -42,6 +43,41 @@ public class AccesoDatosModeloImpl implements IAccesoDatos<Modelo> {
             throw new AccesoDatosEx("Error al escribir en el archivo modelos!" + ex.getMessage());
         }
     }
+    
+    @Override
+    public void sobreEscribir(Modelo modelo, String nombreArchivo) throws AccesoDatosEx {
+        File archivo = new File(nombreArchivo);
+        int indice = buscarIndice(nombreArchivo, modelo);
+        int posicion = 1;
+        try {
+            BufferedReader leer = new BufferedReader(new FileReader(archivo));
+            String linea = leer.readLine();
+            while(linea != null){
+                if (posicion < indice) {
+                    posicion++;
+                    linea = leer.readLine();
+                } else {
+                    break;
+                }                
+            }
+            leer.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al sobre escribir en el archivo modelos!" + ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al sobre escribir en el archivo modelos!" + ex.getMessage());
+        }        
+        try {
+            PrintWriter write = new PrintWriter(new FileWriter(archivo, false));
+            write.println(modelo.toString());
+            write.close();
+            System.out.println("Se modificaron datos de un modelo en el archivo modelos!");
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Se modificaron datos de un modelo en el archivo modelos!" + ex.getMessage());
+        }
+    }
 
     @Override
     public List listar(String nombreArchivo) throws AccesoDatosEx {
@@ -67,18 +103,18 @@ public class AccesoDatosModeloImpl implements IAccesoDatos<Modelo> {
     }
 
     @Override
-    public Modelo buscar(String nombreArchivo, Modelo modelo) throws AccesoDatosEx {
+    public Modelo buscar(String nombreArchivo, String denominacion) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         //modelo = null;
+        //denominacion = null;
+        Modelo modelo = new Modelo();
         try {
             BufferedReader search = new BufferedReader(new FileReader(archivo));
             var indice = 1;
             String linea = search.readLine();
             while(linea != null){
-                if (modelo != null && modelo.equals(linea)) {
-                    //encontrado = "Modelo " + linea + " encontrado en el indice " + indice;
-                    modelo.toString();
-                    //System.out.println("Modelo " + linea + " encontrado en el indice " + indice);
+                if (denominacion != null && denominacion.equals(linea)) {
+                    modelo.getDenominacion();
                     break;
                 }
                 indice++;
@@ -93,6 +129,33 @@ public class AccesoDatosModeloImpl implements IAccesoDatos<Modelo> {
             throw new AccesoDatosEx("Error al buscar en el archivo modelos!" + ex.getMessage());
         }
         return modelo;
+    }
+    
+    @Override
+    public int buscarIndice(String nombreArchivo, Modelo modelo) throws AccesoDatosEx {
+        File archivo = new File(nombreArchivo);
+        var indice = 1;
+        try {
+            BufferedReader search = new BufferedReader(new FileReader(archivo));
+            String linea = search.readLine();
+            while(linea != null){
+                if (modelo != null && modelo.equals(linea)) {
+                    modelo.toString();
+                    break;
+                } else {
+                indice++;
+                }
+                linea = search.readLine();
+            }
+            search.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al buscar indice en el archivo modelos!" + ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            throw new AccesoDatosEx("Error al buscar indice en el archivo modelos!" + ex.getMessage());
+        }
+        return indice;
     }
 
     @Override

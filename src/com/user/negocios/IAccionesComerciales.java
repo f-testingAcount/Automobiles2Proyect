@@ -28,7 +28,7 @@ public interface IAccionesComerciales {
     
     void enviarPedidoAFabricante(Marca marca, int unidades);
     
-    void venderVehiculo(Marca marca, Modelo modelo); 
+    void venderVehiculo(Modelo modelo); 
     
     void ingresarAlService(String ID);
     

@@ -1,5 +1,5 @@
-Modelo Tipo de Vehiculo: Auto | Denominacion: Testarossa | Cantidad: 10 | Caracteristicas: [] -
-Modelo Tipo de Vehiculo: Camioneta | Denominacion: F 140 Raptor | Cantidad: 25 -
+Modelo Tipo de Vehiculo: Auto | Denominacion: Testarossa | Cantidad: 10 -
+Modelo Tipo de Vehiculo: Camioneta | Denominacion: F 150 Raptor | Cantidad: 25 -
 Modelo Tipo de Vehiculo: Camion | Denominacion: 1112 | Cantidad: 5 -
 Modelo Tipo de Vehiculo: Camion | Denominacion: 673 | Cantidad: 1 -
 Modelo Tipo de Vehiculo: Auto | Denominacion: Aventador | Cantidad: 15 -
