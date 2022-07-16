@@ -27,11 +27,13 @@ public class Ejecutable {
 //        Marca marca = new Marca();
         Modelo modelo = new Modelo();
 //        CaracteristicasTec caracteristicas = new CaracteristicasTec();
-//        Distribuidor distribuidor = new Distribuidor();
-//        Agencia agencia = new Agencia();
+        Distribuidor distribuidor = new Distribuidor();
+        Agencia agencia = new Agencia();
         
-        IAccesoDatos datos = new AccesoDatosMarcaImpl();
+        //IAccesoDatos datos = new AccesoDatosMarcaImpl();
         IAccesoDatos datosModelo = new AccesoDatosModeloImpl();
+        IAccesoDatos datosAgencia = new AccesoDatosModeloImpl();
+        IAccesoDatos datosDistribuidor = new AccesoDatosModeloImpl();
         
         IAccionesComerciales accion = new AccionesComercialesImpl();
         
@@ -178,15 +180,20 @@ public class Ejecutable {
                 case 15 ->{ //Buscar Modelo
                     System.out.println("Ingrese la deniminacion del modelo: ");
                     var denominacion = inputString.nextLine();
-                    System.out.println(datosModelo.buscar(ARCHIVO_MODELOS, denominacion));
+                    System.out.println(datosModelo.buscar(ARCHIVO_MODELOS, modelo.getDenominacion()));
                 }
                 
                 case 16 ->{ //Buscar Distribuidor
+                    System.out.println("Ingrese el nombre de la agencia: ");
+                    var nombreDistribuidor = inputString.nextLine();
+                    System.out.println(datosDistribuidor.buscar(ARCHIVO_DISTRIBUIDORES, distribuidor.getNombreDistribuidor()));
                  
                 }
                 
                 case 17 ->{ //Buscar Agencia
-                
+                    System.out.println("Ingrese el nombre de la agencia: ");
+                    var nombreAgencia = inputString.nextLine();
+                    System.out.println(datosAgencia.buscar(ARCHIVO_AGENCIAS, agencia.getNombreAgencia()));
                 }
                 
                 case 18 ->{ //Borrar Archivo

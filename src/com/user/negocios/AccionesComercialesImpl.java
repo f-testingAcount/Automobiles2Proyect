@@ -170,7 +170,7 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     @Override
     public void venderVehiculo(Modelo modelo) {
         try {
-            Modelo modeloEncontrado = datosModelo.buscar(ARCHIVO_MODELOS, modelo);
+            Modelo modeloEncontrado = datosModelo.buscar(ARCHIVO_MODELOS, modelo.getDenominacion());
             if (modeloEncontrado != null) {
                 modeloEncontrado.setCantidad(modeloEncontrado.getCantidad() - 1);
                 System.out.println("Se ha vendido un vehiculo!");

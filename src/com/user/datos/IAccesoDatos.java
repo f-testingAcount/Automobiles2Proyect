@@ -1,5 +1,6 @@
 package com.user.datos;
 
+import com.user.domain.Modelo;
 import com.user.exceptions.AccesoDatosEx;
 import java.util.List;
 
@@ -15,7 +16,9 @@ public interface IAccesoDatos <T> {
 
     List<T> listar(String nombreArchivo) throws AccesoDatosEx;
     
-    T buscar(String nombreArchivo, String denominacion) throws AccesoDatosEx;
+//    T buscar(String nombreArchivo, T object) throws AccesoDatosEx;
+    
+    T buscar(String nombreArchivo, String object) throws AccesoDatosEx;
     
     int buscarIndice(String nombreArchivo, T object) throws AccesoDatosEx;
     

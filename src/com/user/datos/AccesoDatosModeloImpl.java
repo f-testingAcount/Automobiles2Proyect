@@ -102,6 +102,35 @@ public class AccesoDatosModeloImpl implements IAccesoDatos<Modelo> {
         return modelos;
     }
 
+//    @Override
+//    public Modelo buscar(String nombreArchivo, Modelo denominacion) throws AccesoDatosEx {
+//        File archivo = new File(nombreArchivo);
+//        //modelo = null;
+//        //denominacion = null;
+//        //Modelo denominacion = new Modelo();
+//        try {
+//            BufferedReader search = new BufferedReader(new FileReader(archivo));
+//            var indice = 1;
+//            String linea = search.readLine();
+//            while(linea != null){
+//                if (denominacion.getDenominacion() != null && denominacion.getDenominacion().equals(linea)) {
+//                    System.out.println("Se ha localizado el denominacion: " + denominacion.getDenominacion());
+//                    break;
+//                }
+//                indice++;
+//                linea = search.readLine();
+//            }
+//            search.close();
+//        } catch (FileNotFoundException ex) {
+//            ex.printStackTrace(System.out);
+//            throw new AccesoDatosEx("Error al buscar en el archivo modelos!" + ex.getMessage());
+//        } catch (IOException ex) {
+//            ex.printStackTrace(System.out);
+//            throw new AccesoDatosEx("Error al buscar en el archivo modelos!" + ex.getMessage());
+//        }
+//        return denominacion;
+//    }
+    
     @Override
     public Modelo buscar(String nombreArchivo, String denominacion) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
@@ -113,8 +142,8 @@ public class AccesoDatosModeloImpl implements IAccesoDatos<Modelo> {
             var indice = 1;
             String linea = search.readLine();
             while(linea != null){
-                if (denominacion != null && denominacion.equals(linea)) {
-                    modelo.getDenominacion();
+                if (modelo.getDenominacion() != null && modelo.getDenominacion().equalsIgnoreCase(linea)) {
+                    System.out.println("Se ha localizado el modelo: " + modelo.getDenominacion());
                     break;
                 }
                 indice++;

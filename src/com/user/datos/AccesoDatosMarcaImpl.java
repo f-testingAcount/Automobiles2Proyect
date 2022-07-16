@@ -1,6 +1,7 @@
 package com.user.datos;
 
 import com.user.domain.Marca;
+import com.user.domain.Modelo;
 import com.user.exceptions.AccesoDatosEx;
 import java.io.*;
 import java.util.*;
@@ -100,7 +101,7 @@ public class AccesoDatosMarcaImpl implements IAccesoDatos<Marca> {
     }
 
     @Override
-    public Marca buscar(String nombreArchivo, String nombre) throws AccesoDatosEx {
+    public Marca buscar(String nombreArchivo, String nombreMarca) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         //String encontrado = null;
         //marca = null;
@@ -110,8 +111,8 @@ public class AccesoDatosMarcaImpl implements IAccesoDatos<Marca> {
             String linea = search.readLine();
             int indice = 1;
             while(linea != null){
-                if (nombre != null && nombre.equals(linea)) {
-                    //nombre.toString();
+                if (nombreMarca != null && nombreMarca.equals(linea)) {
+                    //nombreMarca.toString();
                     marca.getNombre();
                     break;
                 }

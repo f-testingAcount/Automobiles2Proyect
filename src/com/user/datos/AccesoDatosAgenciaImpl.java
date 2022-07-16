@@ -101,25 +101,28 @@ public class AccesoDatosAgenciaImpl implements IAccesoDatos<Agencia> {
 
     @Override
 //    public Object buscar(String nombreArchivo, Object agencia) throws AccesoDatosEx {
-    public Agencia buscar(String nombreArchivo, String agencia) throws AccesoDatosEx {
+    public Agencia buscar(String nombreArchivo, String nombreAgencia) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         //String encontrado = null;
-        Agencia nombreAgencia = new Agencia();        
+        Agencia agencia = new Agencia();        
         try {
             BufferedReader search = new BufferedReader(new FileReader(archivo));
             String linea = search.readLine();
             int indice = 1;
             while(linea != null){
-                if (agencia != null && agencia.equals(linea)) {
+                if (agencia.getNombreAgencia() != null && agencia.getNombreAgencia().equals(linea)) {
                     //encontrado = "Agencia " + linea + " localizada en el indice " + indice;
                     //agencia.toString();
-                    //System.out.println("Agencia " + agencia + " localizada en el indice " + indice);
-                    System.out.println(nombreAgencia.getNombreAgencia());
+                    System.out.println("Agencia " + agencia.getNombreAgencia() + " localizada en el indice " + indice);
+                    agencia.getNombreAgencia();
                     break;
+                } else {
+                    System.out.println("No se localizo la agencia: " + agencia.getNombreAgencia());
                 }
                 indice++;
                 linea = search.readLine();
             }
+            System.out.println("Se ha localizado la agencia: " + agencia.getNombreAgencia());
             search.close();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace(System.out);
@@ -128,7 +131,7 @@ public class AccesoDatosAgenciaImpl implements IAccesoDatos<Agencia> {
             ex.printStackTrace(System.out);
             throw new AccesoDatosEx("Error al buscar en el archivo agencias!" + ex.getMessage());
         }
-        return nombreAgencia;
+        return agencia;
     }
     
     @Override
