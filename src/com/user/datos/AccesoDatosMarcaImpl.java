@@ -87,6 +87,7 @@ public class AccesoDatosMarcaImpl implements IAccesoDatos<Marca> {
             while(linea != null){
                 Marca marca = new Marca(linea);
                 marcas.add(marca);
+                //System.out.println(marcas.toString());
                 linea = leer.readLine();
             }
             leer.close();

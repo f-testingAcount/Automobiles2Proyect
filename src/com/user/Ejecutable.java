@@ -1,6 +1,7 @@
 
 package com.user;
 
+import com.user.datos.AccesoDatosCaracteristicasTecImpl;
 import com.user.datos.AccesoDatosMarcaImpl;
 import com.user.datos.AccesoDatosModeloImpl;
 import com.user.datos.IAccesoDatos;
@@ -24,16 +25,18 @@ public class Ejecutable {
         Scanner input = new Scanner(System.in);
         Scanner inputString = new Scanner(System.in);
         
-//        Marca marca = new Marca();
+        Marca marca = new Marca();
         Modelo modelo = new Modelo();
-//        CaracteristicasTec caracteristicas = new CaracteristicasTec();
+        CaracteristicasTec caracteristicas = new CaracteristicasTec();
         Distribuidor distribuidor = new Distribuidor();
         Agencia agencia = new Agencia();
         
         //IAccesoDatos datos = new AccesoDatosMarcaImpl();
+        IAccesoDatos datosMarca = new AccesoDatosMarcaImpl();
         IAccesoDatos datosModelo = new AccesoDatosModeloImpl();
-        IAccesoDatos datosAgencia = new AccesoDatosModeloImpl();
+        IAccesoDatos datosTec = new AccesoDatosCaracteristicasTecImpl();        
         IAccesoDatos datosDistribuidor = new AccesoDatosModeloImpl();
+        IAccesoDatos datosAgencia = new AccesoDatosModeloImpl();
         
         IAccionesComerciales accion = new AccionesComercialesImpl();
         
@@ -153,28 +156,29 @@ public class Ejecutable {
                 }
                 
                 case 10 ->{ //Listar Marcas
-                                    
+                    //marca = new Marca();
+                    accion.listarArchivo(ARCHIVO_MARCAS);
                 }
                 
-                case 11 ->{ try {
+                case 11 ->{
                     //Listar Modelos
-                    System.out.println(datosModelo.listar(ARCHIVO_MODELOS) + "\n");
-                } catch (AccesoDatosEx ex) {
-                    Logger.getLogger(Ejecutable.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                    
+                    //modelo = new Modelo();
+                    accion.listarArchivo(ARCHIVO_MODELOS);
                 }
                 
                 case 12 ->{ //Listar Caracteristicas Tecnicas
-                
+                    //caracteristicas = new CaracteristicasTec();
+                    accion.listarArchivo(ARCHIVO_CARACTERISTICAS_TEC);
                 }
                 
                 case 13 ->{ //Listar Distribuidores
-                
+                    //distribuidor = new Distribuidor();
+                    accion.listarArchivo(ARCHIVO_DISTRIBUIDORES);
                 }
                 
                 case 14 ->{ //Listar Agencias
-                
+                    //agencia = new Agencia();
+                    accion.listarArchivo(ARCHIVO_AGENCIAS);
                 }
                 
                 case 15 ->{ //Buscar Modelo
@@ -184,7 +188,7 @@ public class Ejecutable {
                 }
                 
                 case 16 ->{ //Buscar Distribuidor
-                    System.out.println("Ingrese el nombre de la agencia: ");
+                    System.out.println("Ingrese el nombre del distribuidor: ");
                     var nombreDistribuidor = inputString.nextLine();
                     System.out.println(datosDistribuidor.buscar(ARCHIVO_DISTRIBUIDORES, distribuidor.getNombreDistribuidor()));
                  

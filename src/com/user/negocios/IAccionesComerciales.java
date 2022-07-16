@@ -5,7 +5,7 @@ import com.user.domain.Marca;
 import com.user.domain.Modelo;
 
 
-public interface IAccionesComerciales {
+public interface IAccionesComerciales <T>{
     
     String ARCHIVO_MARCAS = "Fabricantes.txt";
     String ARCHIVO_MODELOS = "Modelos.txt";
@@ -25,6 +25,8 @@ public interface IAccionesComerciales {
     void agregarDistribuidor(String nombreArchivo, String nombreDistribuidor, String pais);
     
     void agregarAgencia(String nombreArchivo, String nombreAgencia, String ciudad, String marcaComercializada);
+    
+    void listarArchivo(String nombreArchivo);
     
     void enviarPedidoAFabricante(Marca marca, int unidades);
     
