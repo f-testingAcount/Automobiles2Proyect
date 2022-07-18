@@ -1,0 +1,6 @@
+Marca: Nombre: Ferrari | Origen: Italia | Logo: Cavallino Rampante -
+Marca: Nombre: Lamborghini | Origen: Italia | Logo: Toro -
+Marca: Nombre: Porsche | Origen: Alemania | Logo: Escudo -
+Marca: Nombre: Bugatti | Origen: Francia | Logo: Ovalo con nombre -
+Marca: Nombre: Maserati | Origen: Italia | Logo: Tridente -
+Marca: Nombre: BMW | Origen: Alemania | Logo: Helice -
