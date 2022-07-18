@@ -17,7 +17,7 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     AccesoDatosAgenciaImpl datosAgencia;
 
     public AccionesComercialesImpl() {
-        //this.datos = new AccesoDatosMarcaImpl();
+        this.datos = new AccesoDatosMarcaImpl();
         this.datosMarca = new AccesoDatosMarcaImpl();
         this.datosModelo = new AccesoDatosModeloImpl();
         this.datosTecnicos = new AccesoDatosCaracteristicasTecImpl();
@@ -118,8 +118,8 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
     }
 
     @Override
-    public void agregarCaracteristicasTecnicas(String nombreArchivo, String denominacion, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id) {
-        CaracteristicasTec caracteristica = new CaracteristicasTec(denominacion, tipoMotor, cilindros, cilindrada, HP, caja, equipamiento, carroceria, id);
+    public void agregarCaracteristicasTecnicas(String nombreArchivo, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id, String modeloDenominacion) {
+        CaracteristicasTec caracteristica = new CaracteristicasTec(tipoMotor, cilindros, cilindrada, HP, caja, equipamiento, carroceria, id, modeloDenominacion);
         try {
             if (this.datosTecnicos.existe(ARCHIVO_CARACTERISTICAS_TEC)) {
                 this.datosTecnicos.escribir(caracteristica, nombreArchivo);
@@ -174,48 +174,102 @@ public class AccionesComercialesImpl implements IAccionesComerciales {
 //    }
     @Override
     public void listarArchivo(String nombreArchivo) {
-        if (nombreArchivo == ARCHIVO_MARCAS) {
-            try {
-                List<Marca> marca = this.datosMarca.listar(ARCHIVO_MARCAS);
-                System.out.println("marca = " + marca);
-            } catch (AccesoDatosEx ex) {
-                System.out.println("Error al listar marcas!");
-                ex.printStackTrace(System.out);
+        switch (nombreArchivo) {
+            case ARCHIVO_MARCAS -> {
+                try {
+                    List<Marca> marcas = this.datosMarca.listar(ARCHIVO_MARCAS);
+                    System.out.println(marcas);
+                } catch (AccesoDatosEx ex) {
+                    System.out.println("Error al listar marcas!");
+                    ex.printStackTrace(System.out);
+                }
             }
-        } else if (nombreArchivo == ARCHIVO_MODELOS) {
-            try {
-                List<Modelo> modelo = this.datosModelo.listar(ARCHIVO_MODELOS);
-                System.out.println("modelo = " + modelo);
-            } catch (AccesoDatosEx ex) {
-                System.out.println("Error al listar modelos!");
-                ex.printStackTrace(System.out);
+            case ARCHIVO_MODELOS -> {
+                try {
+                    List<Modelo> modelos = this.datosModelo.listar(ARCHIVO_MODELOS);
+                    System.out.println(modelos);
+                } catch (AccesoDatosEx ex) {
+                    System.out.println("Error al listar modelos!");
+                    ex.printStackTrace(System.out);
+                }
             }
-        } else if (nombreArchivo == ARCHIVO_CARACTERISTICAS_TEC) {
-            try {
-                List<CaracteristicasTec> caracteristica = this.datosTecnicos.listar(ARCHIVO_CARACTERISTICAS_TEC);
-                System.out.println("caracteristica = " + caracteristica);
-            } catch (AccesoDatosEx ex) {
-                System.out.println("Error al listar caracteristicas tecnicas!");
-                ex.printStackTrace(System.out);
+            case ARCHIVO_CARACTERISTICAS_TEC -> {
+                try {
+                    List<CaracteristicasTec> caracteristicas = this.datosTecnicos.listar(ARCHIVO_CARACTERISTICAS_TEC);
+                    System.out.println(caracteristicas);
+                } catch (AccesoDatosEx ex) {
+                    System.out.println("Error al listar caracteristicas tecnicas!");
+                    ex.printStackTrace(System.out);
+                }
             }
-        } else if (nombreArchivo == ARCHIVO_DISTRIBUIDORES) {
-            try {
-                List<Distribuidor> distribuidor = this.datosDistribuidor.listar(ARCHIVO_DISTRIBUIDORES);
-                System.out.println("distribuidor = " + distribuidor);
-            } catch (AccesoDatosEx ex) {
-                System.out.println("Error al listar distribuidores!");
-                ex.printStackTrace(System.out);
+            case ARCHIVO_DISTRIBUIDORES -> {
+                try {
+                    List<Distribuidor> distribuidores = this.datosDistribuidor.listar(ARCHIVO_DISTRIBUIDORES);
+                    System.out.println(distribuidores);
+                } catch (AccesoDatosEx ex) {
+                    System.out.println("Error al listar distribuidores!");
+                    ex.printStackTrace(System.out);
+                }
             }
-        } else if (nombreArchivo == ARCHIVO_AGENCIAS) {
-            try {
-                List<Agencia> agencias = this.datosAgencia.listar(ARCHIVO_AGENCIAS);
-                System.out.println("agencias = " + agencias);
-            } catch (AccesoDatosEx ex) {
-                System.out.println("Error al listar agencias!");
-                ex.printStackTrace(System.out);
+            case ARCHIVO_AGENCIAS -> {
+                try {
+                    List<Agencia> agencias = this.datosAgencia.listar(ARCHIVO_AGENCIAS);
+                    System.out.println(agencias);
+                } catch (AccesoDatosEx ex) {
+                    System.out.println("Error al listar agencias!");
+                    ex.printStackTrace(System.out);
+                }
+            }
+            default -> {
+                    System.out.println("El archivo no pertenece a esta lista!");
             }
         }
     }
+    
+//    @Override
+//    public void listarArchivo(String nombreArchivo) {
+//        if (nombreArchivo == ARCHIVO_MARCAS) {
+//            try {
+//                List<Marca> marca = this.datosMarca.listar(ARCHIVO_MARCAS);
+//                System.out.println("marca = " + marca);
+//            } catch (AccesoDatosEx ex) {
+//                System.out.println("Error al listar marcas!");
+//                ex.printStackTrace(System.out);
+//            }
+//        } else if (nombreArchivo.equals(ARCHIVO_MODELOS)) {
+//            try {
+//                List<Modelo> modelo = this.datosModelo.listar(ARCHIVO_MODELOS);
+//                System.out.println("modelo = " + modelo);
+//            } catch (AccesoDatosEx ex) {
+//                System.out.println("Error al listar modelos!");
+//                ex.printStackTrace(System.out);
+//            }
+//        } else if (nombreArchivo.equals(ARCHIVO_CARACTERISTICAS_TEC)) {
+//            try {
+//                List<CaracteristicasTec> caracteristica = this.datosTecnicos.listar(ARCHIVO_CARACTERISTICAS_TEC);
+//                System.out.println("caracteristica = " + caracteristica);
+//            } catch (AccesoDatosEx ex) {
+//                System.out.println("Error al listar caracteristicas tecnicas!");
+//                ex.printStackTrace(System.out);
+//            }
+//        } else if (nombreArchivo == ARCHIVO_DISTRIBUIDORES) {
+//            try {
+//                List<Distribuidor> distribuidor = this.datosDistribuidor.listar(ARCHIVO_DISTRIBUIDORES);
+//                System.out.println("distribuidor = " + distribuidor);
+//            } catch (AccesoDatosEx ex) {
+//                System.out.println("Error al listar distribuidores!");
+//                ex.printStackTrace(System.out);
+//            }
+//        } else if (nombreArchivo == ARCHIVO_AGENCIAS) {
+//            try {
+//                List<Agencia> agencias = this.datosAgencia.listar(ARCHIVO_AGENCIAS);
+//                System.out.println("agencias = " + agencias);
+//            } catch (AccesoDatosEx ex) {
+//                System.out.println("Error al listar agencias!");
+//                ex.printStackTrace(System.out);
+//            }
+//        }
+//    }
 
     @Override
     public void enviarPedidoAFabricante(Marca marca, int unidades) {

@@ -102,7 +102,7 @@ public class AccesoDatosCaracteristicasTecImpl implements IAccesoDatos<Caracteri
     public CaracteristicasTec buscar(String nombreArchivo, String caracteristica) throws AccesoDatosEx {
         File archivo = new File(nombreArchivo);
         //String encontrado = null;
-        CaracteristicasTec output = new CaracteristicasTec();
+        CaracteristicasTec detalle = new CaracteristicasTec();
         try {
             BufferedReader search = new BufferedReader(new FileReader(archivo));
             String linea = search.readLine();
@@ -110,7 +110,7 @@ public class AccesoDatosCaracteristicasTecImpl implements IAccesoDatos<Caracteri
             while (linea != null) {
                 if (caracteristica != null && caracteristica.equals(linea)) {
                     //caracteristica.toString();
-                    output.equals(caracteristica);
+                    detalle.equals(caracteristica);
                     break;
                 }
                 indice++;
@@ -124,7 +124,7 @@ public class AccesoDatosCaracteristicasTecImpl implements IAccesoDatos<Caracteri
             ex.printStackTrace(System.out);
             throw new AccesoDatosEx("Error al listar archivo de caracteristicas tecnicas!" + ex.getMessage());
         }
-        return output;
+        return detalle;
     }
 
     @Override

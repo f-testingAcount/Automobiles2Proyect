@@ -1,9 +1,0 @@
-Marca: Nombre: Ferrari | Origen: Italia | Logo: Cavallino||
-Marca: Nombre: Lamborghini | Origen: Italia | Logo: Toro||
-Marca: Nombre: Ford | Origen: EEUU | Logo: Ovalo-
-Marca: Nombre: Bugatti | Origen: Francia | Logo: Ovalo con nombre -
-Marca: Nombre: RAM | Origen: EEUU | Logo: Carnero -
-Marca: Nombre: Mercedes Benz | Origen: Alemania | Logo: Estrella -
-Marca: Nombre: BMW | Origen: Alemania | Logo: Helice -
-Marca: Nombre: Ford | Origen: EEUU | Logo: ovalo -
-Marca: Nombre: Chevrolet | Origen: EEUU | Logo: Bowtie -

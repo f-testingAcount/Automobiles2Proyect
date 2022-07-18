@@ -14,8 +14,7 @@ import static com.user.negocios.IAccionesComerciales.ARCHIVO_DISTRIBUIDORES;
 import static com.user.negocios.IAccionesComerciales.ARCHIVO_MARCAS;
 import static com.user.negocios.IAccionesComerciales.ARCHIVO_MODELOS;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class Ejecutable {
@@ -31,7 +30,7 @@ public class Ejecutable {
         Distribuidor distribuidor = new Distribuidor();
         Agencia agencia = new Agencia();
         
-        //IAccesoDatos datos = new AccesoDatosMarcaImpl();
+        IAccesoDatos datos = new AccesoDatosMarcaImpl();
         IAccesoDatos datosMarca = new AccesoDatosMarcaImpl();
         IAccesoDatos datosModelo = new AccesoDatosModeloImpl();
         IAccesoDatos datosTec = new AccesoDatosCaracteristicasTecImpl();        
@@ -70,7 +69,7 @@ public class Ejecutable {
             
             opcion = Integer.parseInt(input.nextLine());
             
-            switch (opcion){  //Iniciar archivos (Marcas, Modelos, Caracteristicas Tecnicas, Distribuidores, Agencias).
+            switch (opcion){ //Iniciar archivos (Marcas, Modelos, Caracteristicas Tecnicas, Distribuidores, Agencias).
                 case 1 -> accion.iniciarArchivo();
                                 
                 case 2 ->{ //Agregar Marca
@@ -96,7 +95,7 @@ public class Ejecutable {
                 
                 case 4 ->{ //Agregar Caracteristicas Tecnicas
                     System.out.println("Ingrese la denominacion del modelo: ");
-                    var denominacion = inputString.nextLine();
+                    var modeloDenominacion = inputString.nextLine();
                     System.out.println("Ingrese el tipo de motor (Nafta, gasoil): ");
                     var tipoMotor = inputString.nextLine();
                     System.out.println("Ingrese la cantidad de cilindros: ");
@@ -113,7 +112,7 @@ public class Ejecutable {
                     var carroceria = inputString.nextLine();
                     System.out.println("Ingrese el id del vehiculo: ");
                     var id = inputString.nextLine();
-                    accion.agregarCaracteristicasTecnicas(ARCHIVO_CARACTERISTICAS_TEC, denominacion, tipoMotor, cilindros, cilindrada, HP, caja, equipamiento, carroceria, id);
+                    accion.agregarCaracteristicasTecnicas(ARCHIVO_CARACTERISTICAS_TEC, tipoMotor, cilindros, cilindrada, HP, caja, equipamiento, carroceria, id, modeloDenominacion);
                 }
                 
                 case 5 ->{ //Agregar Distribuidor
@@ -216,12 +215,12 @@ public class Ejecutable {
                     System.exit(0);
                 }
                 
-                default -> System.out.println("La opcion ingresada no existe! , ingrese una opcion valida! ");
-                
-                     
+                default -> { //Como evitar la excepcion si no ingreso un valor y solo ingreso enter?
                         
+                        System.out.println("La opcion ingresada no existe! , ingrese una opcion valida! ");
+                
+                        }
             }
-                               
             
         } while (opcion != 0);
         

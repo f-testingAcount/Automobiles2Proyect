@@ -11,14 +11,15 @@ public class CaracteristicasTec {
     private String equipamiento; //Base o full
     private String carroceria; //Auto, camioneta, SUV, cntidad de puertas
     private String id; //Codigo unico de identificacion
-
+    private String modeloDenominacion;
+    
     public CaracteristicasTec() {}
 
     public CaracteristicasTec(String id) {
         this.id = id;
     }
 
-    public CaracteristicasTec(String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id) {
+    public CaracteristicasTec(String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id, String modeloDenominacion) {
         this.tipoMotor = tipoMotor;
         this.cilindros = cilindros;
         this.cilindrada = cilindrada;
@@ -27,20 +28,9 @@ public class CaracteristicasTec {
         this.equipamiento = equipamiento;
         this.carroceria = carroceria;
         this.id = id;
+        this.modeloDenominacion = modeloDenominacion;
     }
-
-    public CaracteristicasTec(String denominacion, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id) {
-        this.tipoMotor = tipoMotor;
-        this.cilindros = cilindros;
-        this.cilindrada = cilindrada;
-        this.HP = HP;
-        this.caja = caja;
-        this.equipamiento = equipamiento;
-        this.carroceria = carroceria;
-        this.id = id;
         
-    }
-    
     public String getTipoMotor() {
         return tipoMotor;
     }
@@ -105,11 +95,22 @@ public class CaracteristicasTec {
         this.id = id;
     }
 
+    public String getModeloDenominacion() {
+        return modeloDenominacion;
+    }
+
+    public void setModeloDenominacion(String modeloDenominacion) {
+        this.modeloDenominacion = modeloDenominacion;
+    }
+    
+    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 //        sb.append("Modelo: ").append(denominacion);
-        sb.append(" | Caracteristicas Tecnicas: ");
+        //sb.append("Caracteristicas Tecnicas: ");
+        sb.append(" | Modelo: ").append(modeloDenominacion);
         sb.append(" | TipoMotor: ").append(tipoMotor);
         sb.append(" | Cilindros: ").append(cilindros);
         sb.append(" | Cilindrada: ").append(cilindrada);

@@ -1,13 +1,10 @@
-Modelo Tipo de Vehiculo: Auto | Denominacion: Testarossa | Cantidad: 10 -
-Modelo Tipo de Vehiculo: Camioneta | Denominacion: F 150 Raptor | Cantidad: 25 -
-Modelo Tipo de Vehiculo: Camion | Denominacion: 1112 | Cantidad: 5 -
-Modelo Tipo de Vehiculo: Camion | Denominacion: 673 | Cantidad: 1 -
-Modelo Tipo de Vehiculo: Auto | Denominacion: Aventador | Cantidad: 15 -
-Modelo Tipo de Vehiculo: Camioneta | Denominacion: Ram 1500 | Cantidad: 25 -
-Modelo Tipo de Vehiculo: Moto | Denominacion: Ducati MultiStrada enduro 1260 | Cantidad: 10 -
-Modelo Tipo de Vehiculo: Moto | Denominacion: 1200 GS Adventure | Cantidad: 4 -
-Modelo Tipo de Vehiculo: Auto | Denominacion: F40 | Cantidad: 1311 -
-Modelo Tipo de Vehiculo: Auto | Denominacion: Divo | Cantidad: 1 -
-Modelo Tipo de Vehiculo: Moto | Denominacion: quadd anphibius | Cantidad: 500 -
-Modelo Tipo de Vehiculo: Camion | Denominacion: Babis | Cantidad: 1000 -
-Modelo Tipo de Vehiculo: Moto | Denominacion: F 800 GS Adventure | Cantidad: 500 -
+Tipo de Vehiculo: Auto | Denominacion: Testarossa | Cantidad: 5000 -
+Tipo de Vehiculo: Auto | Denominacion: Aventador | Cantidad: 3000 -
+Tipo de Vehiculo: Auto | Denominacion: 911 turbo s | Cantidad: 3200 -
+Tipo de Vehiculo: Auto | Denominacion: Gelibier | Cantidad: 5 -
+Tipo de Vehiculo: Auto | Denominacion: Quattroporte | Cantidad: 600 -
+Tipo de Vehiculo: SUV | Denominacion: X6M | Cantidad: 1000 -
+Tipo de Vehiculo: Camioneta | Denominacion: LM002 | Cantidad: 500 -
+Tipo de Vehiculo: Auto | Denominacion: F40 | Cantidad: 3111 -
+Tipo de Vehiculo: Auto | Denominacion: 308 GTS | Cantidad: 4000 -
+Tipo de Vehiculo: Auto | Denominacion: 512 TR | Cantidad: 5000 -

@@ -41,7 +41,7 @@ public class Distribuidor {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Distribuidor: ");
+        //sb.append("Distribuidor: ");
         sb.append("Nombre: ").append(nombreDistribuidor);
         sb.append(" | Pais: ").append(pais);
         sb.append(" -");

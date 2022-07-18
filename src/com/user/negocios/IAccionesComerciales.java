@@ -7,7 +7,7 @@ import com.user.domain.Modelo;
 
 public interface IAccionesComerciales <T>{
     
-    String ARCHIVO_MARCAS = "Fabricantes.txt";
+    String ARCHIVO_MARCAS = "Marcas.txt";
     String ARCHIVO_MODELOS = "Modelos.txt";
     String ARCHIVO_CARACTERISTICAS_TEC = "Caracteristicas Tecnicas.txt";
     String ARCHIVO_DISTRIBUIDORES = "Distribuidores.txt";
@@ -20,7 +20,7 @@ public interface IAccionesComerciales <T>{
     
     void agregarModelos(String nombreArchivo, String tipoVehiculo, String denominacion, int cantidad); 
     
-    void agregarCaracteristicasTecnicas(String nombreArchivo, String denominacion, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id);
+    void agregarCaracteristicasTecnicas(String nombreArchivo, String tipoMotor, String cilindros, int cilindrada, int HP, String caja, String equipamiento, String carroceria, String id, String modeloDenominacion);
     
     void agregarDistribuidor(String nombreArchivo, String nombreDistribuidor, String pais);
     

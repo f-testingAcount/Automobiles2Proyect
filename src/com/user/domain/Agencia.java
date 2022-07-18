@@ -37,7 +37,6 @@ public class Agencia {
         this.ciudad = ciudad;
     }
 
-
     public String getMarcaComercializada() {
         return marcaComercializada;
     }
@@ -45,7 +44,6 @@ public class Agencia {
     public void setMarcaComercializada(String marcaComercializada) {
         this.marcaComercializada = marcaComercializada;
     }
-    
     
     public int totalStock(){
         int stock = 0;
@@ -66,7 +64,7 @@ public class Agencia {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Agencia: ");
+        //sb.append("Agencia: ");
         sb.append("Nombre: ").append(nombreAgencia);
         sb.append(" | Ciudad: ").append(ciudad);
         sb.append(" | Marca: ").append(marcaComercializada);

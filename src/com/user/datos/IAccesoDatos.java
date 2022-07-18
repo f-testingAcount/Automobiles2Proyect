@@ -1,6 +1,5 @@
 package com.user.datos;
 
-import com.user.domain.Modelo;
 import com.user.exceptions.AccesoDatosEx;
 import java.util.List;
 
